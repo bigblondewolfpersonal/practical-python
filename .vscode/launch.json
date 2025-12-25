@@ -21,7 +21,7 @@
             "request": "launch",
             "program": "${file}",
             "cwd": "${workspaceFolder}/Work"
-        }
+        },
         {
             "name": "run report",
             "type": "debugpy",
@@ -29,7 +29,7 @@
             "program": "${file}",
             "args": ["Data/portfolio.csv", "Data/prices.csv", "txt"],
             "cwd": "${workspaceFolder}/Work"
-        }
+        },
         {
             "name": "run pcost",
             "type": "debugpy",
