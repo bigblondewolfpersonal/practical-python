@@ -1,0 +1,42 @@
+{
+    "configurations": [
+        {
+            "name": "Python Debugger: Python File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}/Work"
+        },
+        {
+            "name": "Python Debugger: Python File with args",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "args": ["xxx"],
+            "cwd": "${workspaceFolder}/Work"
+        },
+        {
+            "name": "run",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}/Work"
+        }
+        {
+            "name": "run report",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "args": ["Data/portfolio.csv", "Data/prices.csv", "txt"],
+            "cwd": "${workspaceFolder}/Work"
+        }
+        {
+            "name": "run pcost",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "args": ["Data/portfolio.csv"],
+            "cwd": "${workspaceFolder}/Work"
+        }
+    ]
+}
