@@ -4,19 +4,22 @@ from collections import Counter
 import sys
 
 import fileparse
+import portfolio
 import stock
 import tableformat
 
 
 def read_portfolio(portfolio_file: str) -> list[stock.Stock]:
     with open(portfolio_file) as f_pf:
-        return [
-            stock.Stock(d['name'], d['shares'], d['price'])
-            for d in fileparse.parse_csv(
-                f_pf,
-                types=[str, int, float]
-                )
-            ]
+        return portfolio.Portfolio(
+            [
+                stock.Stock(d['name'], d['shares'], d['price'])
+                for d in fileparse.parse_csv(
+                    f_pf,
+                    types=[str, int, float]
+                    )
+                ]
+            )
 
 
 def read_prices(prices_file: str) -> list:
@@ -50,7 +53,7 @@ def portfolio_report(file_portfolio: str, file_prices: str, fmt: str ="txt") -> 
     prices = read_prices(file_prices)
     report = make_report_data(pf, prices)
     formatter = tableformat.create_formatter(fmt)
-    print_report(report, formatter)
+    #print_report(report, formatter)
     print_table(pf, ["name", "shares", "price"], formatter)
 
 
