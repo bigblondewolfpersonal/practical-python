@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 
 import csv
+import sys
 
-from follow import follow
+import follow
+import portfolio
+import tableformat
 import report
 
 def select_columns(rows, indices):
@@ -20,7 +23,7 @@ def make_dicts(rows, headers):
 def parse_stock_data(lines):
     rows = csv.reader(lines)
     rows = select_columns(rows, [0, 1, 4])
-    rows = convert_types(rows, [str, float, float])
+    #rows = convert_types(rows, [str, float, float])
     rows = make_dicts(rows, ["name", "price", "change"])
     return rows
 
@@ -29,10 +32,28 @@ def filter_symbols(rows, names):
         if row["name"] in names:
             yield row
 
-if __name__ == "__main__":
-    pf = report.read_portfolio("Data/portfolio.csv")
-    lines = follow("Data/stocklog.csv")
-    rows = parse_stock_data(lines)
+def ticker(file_pf: str, file_stocklog: str, fmt: tableformat.TableFormatter, cols: list[str]=["name", "price", "change"]):
+    pf = portfolio.read_portfolio(file_pf)
+    stocklog = follow.follow(file_stocklog)
+    formatter = tableformat.create_formatter(fmt)
+    rows = parse_stock_data(stocklog)
     rows = filter_symbols(rows, pf)
+    formatter.headings(cols)
     for row in rows:
-        print(row)
+        formatter.row(row.values())
+
+
+def main():
+    if len(sys.argv) < 3:
+        print(f"Usage: {sys.argv[0]} PORTFOLIO STOCKLOG [FMT]")
+        sys.exit(1)
+    fmt = "txt"
+    file_pf = sys.argv[1]
+    file_stocklog = sys.argv[2]
+    if len(sys.argv) == 4:
+        fmt = sys.argv[3]
+    ticker(file_pf, file_stocklog, fmt=fmt)
+
+
+if __name__ == "__main__":
+    main()

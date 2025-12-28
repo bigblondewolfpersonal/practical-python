@@ -38,5 +38,13 @@
             "args": ["Data/portfolio.csv"],
             "cwd": "${workspaceFolder}/Work"
         }
+        {
+            "name": "run ticker",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "args": ["Data/portfolio.csv", "Data/stocklog.csv"],
+            "cwd": "${workspaceFolder}/Work"
+        }
     ]
 }

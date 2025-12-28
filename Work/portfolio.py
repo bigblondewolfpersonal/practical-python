@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import fileparse
 import stock
 
 class Portfolio:
@@ -28,3 +29,16 @@ class Portfolio:
         for s in self._holdings:
             total_stock[s.name] += s.stock
         return total_stock
+
+
+def read_portfolio(portfolio_file: str) -> list[stock.Stock]:
+    with open(portfolio_file) as f_pf:
+        return Portfolio(
+            [
+                stock.Stock(d['name'], d['shares'], d['price'])
+                for d in fileparse.parse_csv(
+                    f_pf,
+                    types=[str, int, float]
+                    )
+                ]
+            )
