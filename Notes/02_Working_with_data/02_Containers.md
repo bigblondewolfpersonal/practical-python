@@ -159,7 +159,7 @@ Then to access:
 >>>
 ```
 
-*Neither a list, a set, nor another dictionary can serve as a dictionary key, because lists and dictionaries are mutable.*
+*Neither a list, a set, nor another dictionary can serve as a dictionary key, because lists, sets, and dictionaries are mutable.*
 
 ### Sets
 

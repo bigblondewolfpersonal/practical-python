@@ -289,13 +289,13 @@ class TableFormatter:
         '''
         Emit the table headings.
         '''
-	raise NotImplementedError()
+        raise NotImplementedError()
 
     def row(self, rowdata):
         '''
         Emit a single row of table data.
         '''
-	raise NotImplementedError()
+        raise NotImplementedError()
 ```
 
 This class does nothing, but it serves as a kind of design specification for

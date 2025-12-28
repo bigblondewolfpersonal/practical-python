@@ -75,9 +75,8 @@ Ok, ok. Point your browser [HERE](Notes/Contents.md)!
 
 ## Community Discussion
 
-Want to discuss the course?  You can join the conversation on
-[Gitter](https://gitter.im/dabeaz-course/practical-python).  I can't
-promise an individual response, but perhaps others can jump in to help.
+Want to discuss the course?  Feel free to use [GitHub Discussions](https://github.com/dabeaz-course/practical-python/discussions).
+I can't promise an individual response, but perhaps others can jump in to help.
 
 ## Acknowledgements
 

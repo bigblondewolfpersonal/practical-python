@@ -221,8 +221,8 @@ Try it:
 ```python
 >>> import gzip
 >>> with gzip.open('Data/portfolio.csv.gz', 'rt') as f:
-    for line in f:
-        print(line, end='')
+        for line in f:
+            print(line, end='')
 
 ... look at the output ...
 >>>

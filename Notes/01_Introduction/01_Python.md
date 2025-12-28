@@ -150,6 +150,21 @@ I taught this course in my office.  You could query the bus and then
 literally watch it pass by the window out front.  Sadly, APIs rarely live
 forever and it seems that this one has now ridden off into the sunset. --Dave
 
+Update: GitHub user @asett has suggested the following modified code might work,
+but you'll have to provide your own API key (available [here](https://www.transitchicago.com/developers/bustracker/)).
+
+```python
+import urllib.request
+u = urllib.request.urlopen('http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=ADD_YOUR_API_KEY_HERE&rt=22&stpid=14791')
+from xml.etree.ElementTree import parse
+doc = parse(u)
+print("Arrival time in minutes:")
+for pt in doc.findall('.//prdctdn'):
+        print(pt.text)
+```
+
+(Original exercise example follows below)
+
 Try something more advanced and type these statements to find out how
 long people waiting on the corner of Clark street and Balmoral in
 Chicago will have to wait for the next northbound CTA \#22 bus:
